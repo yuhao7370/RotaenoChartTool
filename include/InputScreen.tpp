@@ -16,14 +16,14 @@ std::string InputScreen::inputArgument(Chart& chart, const std::string& title, A
             double t1 = chart.getNote(chart.getNoteSize() - 1).getValue(NoteAttr::time);
             double t2 = chart.getSpeed(chart.getSpeedSize() - 1).getValue(SpeedAttr::time);
             double t3 = chart.getBPM(chart.getBPMSize() - 1).getValue(BPMAttr::time);
-            std::string input = std::to_string(std::max({ t1, t2, t3 }));
-            if (input.find('.') != std::string::npos) {
+            std::string max_pos = std::to_string(std::max({ t1, t2, t3 }));
+            if (max_pos.find('.') != std::string::npos) {
                 while (true) {
-                    if (input.back() == '0') {
-                        input.pop_back();
+                    if (max_pos.back() == '0') {
+                        max_pos.pop_back();
                     }
-                    else if (input.back() == '.'){
-                        input.pop_back();
+                    else if (max_pos.back() == '.'){
+                        max_pos.pop_back();
                         break;
                     }
                     else{
@@ -32,21 +32,25 @@ std::string InputScreen::inputArgument(Chart& chart, const std::string& title, A
                 }
             }
 
-            addToStringDeq(input, count);
+            addToStringDeq(max_pos, count);
+            input = stod(max_pos);
             count++;
             pass.clear();
         }
         else {
             std::string output = inputFromUser(screen_str, range, count);
             count++;
+            pass = output;
             if (output == "x") {
-                pass = output;
                 return;
+            }
+            else if (output == "all"){
+                input = 0;
             }
             else if (isNumber(output)) {
                 input = stod(output);
             }
-            pass = output;
+            
         }
         if constexpr (sizeof...(args) > 0) {
             lambda(lambda, pass, args...);

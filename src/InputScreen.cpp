@@ -98,9 +98,10 @@ bool InputScreen::inRange(const std::string& target, const std::string& range_st
                 }
             }
         }
-        if ((isNumber(target) && isNumber(token))) {
-            range_elements.push_back(token);
-        }
+        range_elements.push_back(token);
+        // if ((isNumber(target) && isNumber(token))) {
+            
+        // }
     }
     return find(range_elements.begin(), range_elements.end(), target) != range_elements.end();
 }

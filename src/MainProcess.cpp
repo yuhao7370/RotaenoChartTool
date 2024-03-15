@@ -36,8 +36,8 @@ void MainProcess::menu() {
         std::cout << "5.Get Distance" << std::endl;
         std::cout << "6.Real Copy" << std::endl;
         std::cout << "7.\'Circuit\' Maker" << std::endl;
-        std::cout << "8.Random Right Angle Maker" << std::endl;
-        std::cout << "9.Note Follow Trail" << std::endl;
+        std::cout << "8.Note Follow Trail" << std::endl;
+        std::cout << "9.Random Right Angle Maker" << std::endl;
         std::cout << "10.Sawtooth Wave Maker" << std::endl;
         std::cout << "Input \"x\" to exit" << std::endl << std::endl;
         std::cout << "Input:";
@@ -67,10 +67,10 @@ void MainProcess::menu() {
             makeCircuit();
         }
         else if (command == "8") {
-            randomRightAngleMaker();
+            noteFollowTrail();
         }
         else if (command == "9") {
-            noteFollowTrail();
+            randomRightAngleMaker();
         }
         else if (command == "10") {
             sawtoothWaveMaker();
