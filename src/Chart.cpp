@@ -215,6 +215,12 @@ double Chart::findDegreeByTime(const double time) const {
 				a2 += 180;
 			}
 		}
+
+		if ((a1 <= 0.0 && a2 >= 0.0) || (a1 >= 0.0 && a2 <= 0.0) || (a1 <= 360.0 && a2 >= 360.0) || (a1 >= 360.0 && a2 <= 360.0)){
+			result = fmod(result, 360);
+			return result;
+        }
+	
 		result = getYfromX(a1, a2, c1/100, c2/100, (d - d1) / (d2 - d1));
 		result = fmod(result, 180);
 	}
